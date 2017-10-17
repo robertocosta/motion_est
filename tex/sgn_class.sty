@@ -1,0 +1,83 @@
+% -----------------------------*- LaTeX -*------------------------------
+%   Mattia Zorzi;  Aprile, 2011
+% ----------------------------------------------------------------------
+\RequirePackage{amsmath,amssymb}
+
+
+\def\coursetitle#1{\def\@coursetitle{#1}}
+\coursetitle{Segnali e Sistemi}
+
+
+
+
+\def\nome#1{\def\@nome{#1}}
+\def\cognome#1{\def\@cognome{#1}}
+\def\matricola#1{\def\@matricola{#1}}
+
+\def\tesina#1{\def\@tesina{#1}}
+
+
+\def\xxx{\vphantom{()}}
+\def\maketitle
+{
+\def\@oddhead{\underline{\hbox to\textwidth{\textbf{%
+    \rlap{\phantom{()}}\hfil
+    Tesina~\@tesina~
+    \hfil\llap{\@cognome\xxx\hspace*{0.2cm}\@nome}}}}}
+\def\@oddfoot{\hfil\@tesina-\thepage\hfil}
+
+\def\ps@myfirst{\ps@plain\def\@oddfoot{\hfil\@tesina-\thepage\hfil}}
+
+\thispagestyle{myfirst} \noindent \framebox[\textwidth]{\vbox to
+0.75in{ \hbox to \textwidth{~\textsl{\rlap{
+\@cognome\xxx\hspace*{0.2cm}\@nome}\hfill\llap{ Matricola:
+\@matricola}}~}
+ \vss \hbox to \textwidth{\Large\hfill Tesina
+\@tesina~\hfill} \vss \hbox to
+\textwidth{~\textbf{\rlap{\@coursetitle\xxx}
+    \hfil\llap{Punti: \hspace*{1,2cm}}}~} }}
+\setcounter{chapter}{1}
+\bigskip
+}
+
+
+
+% ----------------------------------------------------------------------
+%  Dangerous bend environments, stolen from TeXbook and slightly
+%  massaged.
+%
+%  Invoke as \begin{[d]danger}...\end{[d]danger}.  The enclosed text
+%  is offset just like any other list (theorem, proof, etc.)  Puts
+%  sign[s] in front of first two lines of first paragraph, which are
+%  (supposedly) never split by a page boundary.  Does NOT shrink or
+%  otherwise modify the text.
+% ----------------------------------------------------------------------
+%  The dangerous bend signs are the correct size to match two lines of
+%  Computer Modern 9pt type.   We really ought to scale them up to
+%  fit whatever size we're using, but we don't.  Unfortunately, manfnt
+%  is actually a 10pt font, so if we want to match 11pt Computer
+%  Modern, we have to scale manfnt to 12.222222pt!  Thanks, Don.
+% ----------------------------------------------------------------------
+\font\manual=manfnt
+\def\dbend{{\manual\char127}} % dangerous bend sign
+
+% Danger, Will Robinson!
+\def\danger{\begin{trivlist}\item[]\noindent%
+\begingroup\hangindent=3pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\hfill}\ignorespaces}
+\def\enddanger{\par\end{trivlist}}
+
+% Danger! Danger!
+\def\ddanger{\begin{trivlist}\item[]\noindent%
+\begingroup\hangindent=3pc\hangafter=-2%\clubpenalty=10000%
+\def\par{\endgraf\endgroup}%
+\hbox to0pt{\hskip-\hangindent\dbend\kern2pt\dbend\hfill}\ignorespaces}
+\def\endddanger{\par\end{trivlist}}
+
+
+  %Formatting
+\oddsidemargin .250in \evensidemargin .250in \marginparwidth 0.07
+true in \addtolength{\headsep}{0.25in} \textheight 8.5 true in
+\textwidth 6 true in \clubpenalty=10000
+
