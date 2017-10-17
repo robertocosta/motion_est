@@ -1,2 +1,2 @@
-# motion_detect
-Motion detection and estimate
+# motion_est
+Motion Estimation with the method of Lucas and Kanade
